@@ -35,7 +35,7 @@ public class StatisticalOrder extends HttpServlet {
 	response.setContentType("text/html;charset=UTF-8");
 	request.setCharacterEncoding("utf-8");
 
-	request.setAttribute("orderTotals", new Order().getAllTotalOrder());
+	request.setAttribute("orderTotals", new Order().getAllTotalOrder2());
 	request.setAttribute("orderSingles", new Order().getAllSingleOrder());
 	request.getRequestDispatcher("../Admin/template/statistical/OrderStatistical.jsp").forward(request, response);
     }

@@ -12,7 +12,24 @@ public class OrderTotal {
     private String phone;
     private float discount;
     private int status;
+    private String orderName;
   
+    
+    
+    
+    public OrderTotal(String id, float total, String note, int transport, int user, String phone, float discount,
+	    int status, String orderName) {
+	super();
+	this.id = id;
+	this.total = total;
+	this.note = note;
+	this.transport = transport;
+	this.user = user;
+	this.phone = phone;
+	this.discount = discount;
+	this.status = status;
+	this.orderName = orderName;
+    }
     public OrderTotal(String id, float total, String note, int transport, int user, String phone, float discount,
 	    int status) {
 	super();
@@ -24,6 +41,14 @@ public class OrderTotal {
 	this.phone = phone;
 	this.discount = discount;
 	this.status = status;
+    }
+    
+    
+    public String getOrderName() {
+        return orderName;
+    }
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
     }
     public float getDiscount() {
         return discount;

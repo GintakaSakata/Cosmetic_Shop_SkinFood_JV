@@ -49,12 +49,28 @@ public class Order {
 	}
 	return orderTotals;
     }
+    public List<OrderTotal> getAllTotalOrder2() {
+	List<OrderTotal> orderTotals = new ArrayList<OrderTotal>();
+	String query = "select * from ordertotal";
+	try {
+	    conn = new ConnectDB().getDBConnection();
+	    ps = conn.prepareStatement(query);
+	    rs = ps.executeQuery();
+	    while (rs.next()) {
+		orderTotals.add(new OrderTotal(rs.getString(1), rs.getFloat(2), rs.getString(3), rs.getInt(4),
+			rs.getInt(5), rs.getString(6), rs.getFloat(7), rs.getInt(8), rs.getString(9)));
+	    }
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+	return orderTotals;
+    }
 
     public void addOrderTotal(ArrayList<CartItem> cartItems, String orderName, String orderAddress, String orderPhone,
 	    String transport, String magiamgia, String orderNote, Double total, String userLogin) {
 	String id = createRandomString();
-	String queryOrderTotal = "insert into ordertotal(id, total, note, transport_id, user_id, phone, discount, status)"
-		+ "values (?,?,?,?,?,?,?,0)";
+	String queryOrderTotal = "insert into ordertotal(id, total, note, transport_id, user_id, phone, discount, status, name)"
+		+ "values (?,?,?,?,?,?,?,0,?)";
 	try {
 	    conn = new ConnectDB().getDBConnection();
 	    ps = conn.prepareStatement(queryOrderTotal);
@@ -69,6 +85,7 @@ public class Order {
 	    }
 	    ps.setString(6, orderPhone);
 	    ps.setDouble(7, new CouponDAO().getCouponDiscountAmount(magiamgia));
+	    ps.setString(8, orderName);
 	    System.out.println(ps);
 	    ps.executeUpdate();
 	} catch (Exception e) {

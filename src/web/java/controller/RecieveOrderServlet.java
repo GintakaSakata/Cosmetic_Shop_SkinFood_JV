@@ -68,8 +68,6 @@ public class RecieveOrderServlet extends HttpServlet {
 	request.setAttribute("categories", new CategoryDAO().getAllCategory());
 	request.setAttribute("collections", new CollectionDAO().getAllCollection());
 	
-	HttpSession session = request.getSession();
-	session.removeAttribute("cart");
 	
 	response.sendRedirect("history");
     }
