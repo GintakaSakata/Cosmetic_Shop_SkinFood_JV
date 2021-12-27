@@ -16,6 +16,7 @@
 		<php:forEach items="${historyTransactions }" var="his">
 			<div class="cart_main_wrapper_list_order">
 				<h3 class="cart_list_order_title">Mã đơn hàng: ${his.getId() }</h3>
+				<h4 class="cart_list_order_title">Ngày đặt hàng: ${his.getTimeOrderString() }</h4>
 				<div
 					class="cart_list_order_element_ne row text-center d-flex align-items-center">
 					<p class="cart_list_order_element_1 col-md-2">Ảnh</p>
@@ -42,8 +43,10 @@
 						</div>
 					</php:if>
 				</php:forEach>
-				<div class="d-flex text-center">
-					<div class="col-md-6"></div>
+				<div class="d-flex text-center mt-4">
+					<div class="col-md-2"></div>
+					<p class="col-md-4 text-right text-danger">Phone number:
+						${his.getPhone() }</p>
 					<div class="col-md-2">Vận chuyển:</div>
 					<div class="col-md-2">${his.getTransportName() }</div>
 					<div class="col-md-2 btn btn-primary">${his.getTransportFee() }đ</div>

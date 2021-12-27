@@ -1,8 +1,10 @@
 package web.java.dao;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,30 +37,34 @@ public class Order {
 
     public List<OrderTotal> getAllTotalOrder() {
 	List<OrderTotal> orderTotals = new ArrayList<OrderTotal>();
-	String query = "select * from ordertotal";
+	String query = "select * from ordertotal order by time_order desc";
+
 	try {
 	    conn = new ConnectDB().getDBConnection();
 	    ps = conn.prepareStatement(query);
 	    rs = ps.executeQuery();
 	    while (rs.next()) {
-		orderTotals.add(new OrderTotal(rs.getString(1), rs.getFloat(2), rs.getString(3), rs.getInt(4),
-			rs.getInt(5), rs.getString(6), rs.getFloat(7), rs.getInt(8)));
+		orderTotals.add(
+			new OrderTotal(rs.getString(1), rs.getFloat(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+				rs.getString(6), rs.getFloat(7), rs.getInt(8), rs.getString(9), rs.getTimestamp(10)));
 	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
 	return orderTotals;
     }
+
     public List<OrderTotal> getAllTotalOrder2() {
 	List<OrderTotal> orderTotals = new ArrayList<OrderTotal>();
-	String query = "select * from ordertotal";
+	String query = "select * from ordertotal order by time_order desc";
 	try {
 	    conn = new ConnectDB().getDBConnection();
 	    ps = conn.prepareStatement(query);
 	    rs = ps.executeQuery();
 	    while (rs.next()) {
-		orderTotals.add(new OrderTotal(rs.getString(1), rs.getFloat(2), rs.getString(3), rs.getInt(4),
-			rs.getInt(5), rs.getString(6), rs.getFloat(7), rs.getInt(8), rs.getString(9)));
+		orderTotals.add(
+			new OrderTotal(rs.getString(1), rs.getFloat(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+				rs.getString(6), rs.getFloat(7), rs.getInt(8), rs.getString(9), rs.getTimestamp(10)));
 	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -69,23 +75,26 @@ public class Order {
     public void addOrderTotal(ArrayList<CartItem> cartItems, String orderName, String orderAddress, String orderPhone,
 	    String transport, String magiamgia, String orderNote, Double total, String userLogin) {
 	String id = createRandomString();
-	String queryOrderTotal = "insert into ordertotal(id, total, note, transport_id, user_id, phone, discount, status, name)"
-		+ "values (?,?,?,?,?,?,?,0,?)";
+	String queryOrderTotal = "insert into ordertotal(id, total, note, transport_id, user_id, phone, discount, status, name, time_order)"
+		+ "values (?,?,?,?,?,?,?,0,?,?)";
 	try {
+	    Date date = new Date();
+	    Timestamp timestamp = new Timestamp(date.getTime());
 	    conn = new ConnectDB().getDBConnection();
 	    ps = conn.prepareStatement(queryOrderTotal);
 	    ps.setString(1, id);
 	    ps.setDouble(2, total);
 	    ps.setString(3, orderNote);
 	    ps.setString(4, transport);
-	    if(userLogin.isEmpty() == true) {
-		ps.setInt(5, -1);		
-	    }else {
-		ps.setString(5, userLogin);			
+	    if (userLogin.isEmpty() == true) {
+		ps.setInt(5, -1);
+	    } else {
+		ps.setString(5, userLogin);
 	    }
 	    ps.setString(6, orderPhone);
 	    ps.setDouble(7, new CouponDAO().getCouponDiscountAmount(magiamgia));
 	    ps.setString(8, orderName);
+	    ps.setTimestamp(9, timestamp);
 	    System.out.println(ps);
 	    ps.executeUpdate();
 	} catch (Exception e) {
@@ -109,8 +118,9 @@ public class Order {
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
-	    updateProductQtt(cartItem.getProduct().getId(), (new ProductDAO().getQttById(cartItem.getProduct().getId())) - cartItem.getNumber());
-	    updateProductSold(cartItem.getProduct().getId(), cartItem.getProduct().getSold()+cartItem.getNumber());
+	    updateProductQtt(cartItem.getProduct().getId(),
+		    (new ProductDAO().getQttById(cartItem.getProduct().getId())) - cartItem.getNumber());
+	    updateProductSold(cartItem.getProduct().getId(), cartItem.getProduct().getSold() + cartItem.getNumber());
 	}
 
     }
@@ -129,7 +139,7 @@ public class Order {
 	    e.printStackTrace();
 	}
     }
-    
+
     public void updateProductSold(int idProduct, int quantity) {
 	String query = "update product set sold = ? where id = ? ";
 	try {
@@ -156,20 +166,40 @@ public class Order {
 
     public List<OrderTotal> getAllHistoryTransactionById(int id) {
 	List<OrderTotal> totalOrder = new ArrayList<OrderTotal>();
-	String query = "SELECT * FROM ordertotal where user_id = ?";
-	try {
-	    conn = new ConnectDB().getDBConnection();
-	    ps = conn.prepareStatement(query);
-	    ps.setInt(1, id);
-	    rs = ps.executeQuery();
-	    while (rs.next()) {
-		totalOrder.add(new OrderTotal(rs.getString(1), rs.getFloat(2), rs.getString(3), rs.getInt(4),
-			rs.getInt(5), rs.getString(6), rs.getFloat(7), rs.getInt(8)));
+	if (id == -1) {
+	    String query = "SELECT * FROM ordertotal where user_id = ? order by time_order DESC limit 1";
+	    try {
+		conn = new ConnectDB().getDBConnection();
+		ps = conn.prepareStatement(query);
+		ps.setInt(1, id);
+		rs = ps.executeQuery();
+		while (rs.next()) {
+		    totalOrder.add(new OrderTotal(rs.getString(1), rs.getFloat(2), rs.getString(3), rs.getInt(4),
+			    rs.getInt(5), rs.getString(6), rs.getFloat(7), rs.getInt(8), rs.getString(9),
+			    rs.getTimestamp(10)));
+		}
+	    } catch (Exception e) {
+		e.printStackTrace();
 	    }
-	} catch (Exception e) {
-	    e.printStackTrace();
+	    return totalOrder;
+	} else {
+	    String query = "SELECT * FROM ordertotal where user_id = ? order by time_order desc";
+	    try {
+		conn = new ConnectDB().getDBConnection();
+		ps = conn.prepareStatement(query);
+		ps.setInt(1, id);
+		rs = ps.executeQuery();
+		while (rs.next()) {
+		    totalOrder.add(new OrderTotal(rs.getString(1), rs.getFloat(2), rs.getString(3), rs.getInt(4),
+			    rs.getInt(5), rs.getString(6), rs.getFloat(7), rs.getInt(8), rs.getString(9),
+			    rs.getTimestamp(10)));
+		}
+	    } catch (Exception e) {
+		e.printStackTrace();
+	    }
+	    return totalOrder;
 	}
-	return totalOrder;
+//	return totalOrder;
     }
 
     public List<OrderSingle> getAllOrderSingleById(int id) {

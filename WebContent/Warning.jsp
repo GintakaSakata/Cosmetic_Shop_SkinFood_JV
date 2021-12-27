@@ -12,10 +12,12 @@
 
 </head>
 <body>
-	<div class="text-center p-4" style="background-color: #0a0a0a; color: red">
+	<div class="text-center p-4"
+		style="background-color: #0a0a0a; color: red">
 		<h1 class="text-center ">You not have permission to go here</h1>
-		<a href="home" class="text-center btn btn-danger mt-4">Return to home</a> 
-		<img src="https://i.pinimg.com/originals/5b/d2/f8/5bd2f8db902b388efb2b6abcaabc85a2.jpg"
+		<a href="home" class="text-center btn btn-danger mt-4">Return to
+			home</a> <img
+			src="https://i.pinimg.com/originals/5b/d2/f8/5bd2f8db902b388efb2b6abcaabc85a2.jpg"
 			style="width: 100%">
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -1165,3 +1165,28 @@
 	font-weight: 400;
 }
 
+
+.profile {
+	margin: auto;
+	text-align: center;
+	width: 50%;
+}
+
+.line-space {
+	border-bottom: 1px solid red;
+	padding: 0px 10px 0px 10px;
+}
+
+.form-box {
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.form-element {
+	margin: 20px;
+}
+
+.imgAvatar {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}

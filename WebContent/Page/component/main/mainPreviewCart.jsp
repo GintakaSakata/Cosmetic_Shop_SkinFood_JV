@@ -51,7 +51,7 @@
 				</div>
 				<div class="row">
 					<label for="" class="col-md-6">Nhập Số điện thoại</label> <input
-						style="width: 250px" type="text" name="orderPhone" id="phoneNumberCheck" onchange="checkPhone()"
+						style="width: 250px" type="text" value="${userLogin.getPhone() }" name="orderPhone" id="phoneNumberCheck" onchange="checkPhone()"
 						placeholder="Số điện thoại">
 					<p id="phoneNumberCheckMess" class="text-danger" style="font-size: 14px"></p>
 				</div>

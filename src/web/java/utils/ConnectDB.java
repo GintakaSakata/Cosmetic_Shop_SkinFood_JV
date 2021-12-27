@@ -8,7 +8,7 @@ public class ConnectDB {
 	public Connection getDBConnection() {
 		String connectUrl = "jdbc:mysql://localhost:3306/dangu?useUnicode=true&characterEncoding=UTF-8";
 		String username = "root";
-		String password = "030195";
+		String password = "gintaka";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection connect = DriverManager.getConnection(connectUrl, username, password);

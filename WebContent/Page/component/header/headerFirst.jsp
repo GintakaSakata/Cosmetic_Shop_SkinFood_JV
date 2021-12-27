@@ -77,7 +77,7 @@
 								class="fas fa-cogs text-danger me-2"></i>
 								Management Page <span class="badge badge-pill badge-danger">1</span></a>
 							</php:if>
-							<a class="dropdown-item my-2 "><i
+							<a href="./profile" class="dropdown-item my-2 "><i
 								class="far fa-user text-primary me-2"></i>
 								My Profile <span class="badge badge-pill badge-danger">1</span></a>
 							<a class="dropdown-item my-2 " href="history"><i

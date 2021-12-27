@@ -21,7 +21,7 @@
             <div class="main">
                 <form action="signup" method="post" class="form" id="form-signup">
                     <h3 class="login-title">
-                        Đăng Kí Thành Viênn
+                        Đăng Kí Thành Viên
                     </h3>
                     <div class="form-group">
                         <input type="text" id="name" name="fullname" placeholder="Tên đầy đủ">

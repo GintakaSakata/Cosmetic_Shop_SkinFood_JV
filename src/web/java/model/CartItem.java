@@ -3,7 +3,6 @@ package web.java.model;
 public class CartItem {
     public Product product;
     public int number;
-//    public int productId;
   
     public CartItem(Product product, int number) {
 	super();

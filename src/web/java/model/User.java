@@ -11,6 +11,7 @@ public class User {
     private int role;
     private String avatar;
     public float total;
+    public String phone;
 
     public User() {
 	super();
@@ -44,6 +45,30 @@ public class User {
 	this.role = role;
 	this.avatar = avatar;
 	this.total = total;
+    }
+    
+    
+
+    public User(int id, String username, String password, String email, String fullname, int role, String avatar,
+	    float total, String phone) {
+	super();
+	this.id = id;
+	this.username = username;
+	this.password = password;
+	this.email = email;
+	this.fullname = fullname;
+	this.role = role;
+	this.avatar = avatar;
+	this.total = total;
+	this.phone = phone;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public float getTotal() {
