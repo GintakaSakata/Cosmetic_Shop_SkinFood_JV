@@ -30,10 +30,16 @@
 	padding-right: 14px;
 }
 
+.cart_link_element:hover{
+	color: red;
+}
+
 .icon-social:hover, .product-viewed:hover {
 	color: #199427;
 	cursor: pointer;
 }
+
+
 
 .contact-product, .contact-account {
 	padding-left: 24px;

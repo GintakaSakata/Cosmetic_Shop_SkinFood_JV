@@ -17,7 +17,9 @@
 				</a>
 			</php:forEach>
 			<div class="wrapper_cart_link">
-				<a href="cart" class="cart_link_element">Đến Giỏ Hàng</a>
+				<a style="poiter: cursor" href="cart" class="cart_link_element">
+					Đến Giỏ Hàng
+				</a>
 			</div>
 		</div>
 	</php:if>

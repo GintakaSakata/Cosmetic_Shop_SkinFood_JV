@@ -110,6 +110,11 @@ public class Product {
 	return this.priceDefault*(100-this.discount)/100;
     }
     
+    public static String getPriceStaticFormat(String price) {
+	Double price2 = Double.parseDouble(price);
+	return String.format("%1$,.0f", price2);
+    }
+    
     public String getFormatPriceDefault() {
 	return String.format("%1$,.0f", (double)this.getPriceDefault());
     }
@@ -122,11 +127,6 @@ public class Product {
     public String getFormatPrice(double price) {
 	return String.format("%1$,.0f", (double)price );
     }
-//    public static void main(String args[]) {
-//	
-//	System.out.print(100*(100-30)/100) ;
-//    }
-    
 
     public void setPriceDefault(double priceDefault) {
         this.priceDefault = priceDefault;

@@ -106,8 +106,10 @@
 						name="${cartItem.getProduct().getId() }"
 						value="${cartItem.getNumber() }" class="form_to_order_element">
 				</php:forEach>
+				<input type="hidden" id="old_total" name="oldtotal" class="total_price_hidden"
+					value="${sessionScope.cart.getTotal()}" /> 
 				<input type="hidden" id="total_price_hidden" name="total_price"
-					class="total_price_hidden" value="${sessionScope.cart.getTotal()}">
+					class="total_price_hidden" value="${sessionScope.cart.getTotal()}" />
 				<input type="text" class="col-md-2 btn btn-danger mr-4"
 					value="${sessionScope.cart.getTotal()}" id="total_price">
 				<input type="submit" class="col-md-2 btn btn-success" value="Đặt hàng">

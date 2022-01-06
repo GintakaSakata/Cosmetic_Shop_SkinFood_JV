@@ -11,7 +11,11 @@
 				Hàng</h3>
 		</div>
 	</div>
-
+	
+	<php:if test="${historyTransactions.isEmpty() == true }">
+		<h3 class="text-danger text-center mt-4">Empty</h3>
+	</php:if>
+	
 	<div class="cart_main_wrapper">
 		<php:forEach items="${historyTransactions }" var="his">
 			<div class="cart_main_wrapper_list_order">

@@ -47,7 +47,10 @@ public class PreviewOrder extends HttpServlet {
 	
 	HttpSession session = request.getSession();
 	Cart cart = (Cart) session.getAttribute("cart");
-	
+	if(cart == null) {
+	    response.sendRedirect("home");
+	    return;
+	}
 	request.setAttribute("totalOrder", cart.getTotal() );
 	request.setAttribute("totalFormat", String.format("%1$,.0f", cart.getTotal()+transportFee));
 	

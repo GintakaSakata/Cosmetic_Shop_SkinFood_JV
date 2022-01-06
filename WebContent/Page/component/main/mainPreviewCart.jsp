@@ -56,6 +56,11 @@
 					<p id="phoneNumberCheckMess" class="text-danger" style="font-size: 14px"></p>
 				</div>
 				<div class="row">
+					<label for="" class="col-md-6">Email (Edit in your profile)</label> <input
+						style="width: 250px" type="text" value="${userLogin.getEmail() }" name="emaik" id="email" 
+						disabled>
+				</div>
+				<div class="row">
 					<label for="" class="col-md-6">Nhập đơn vị vận chuyển</label> <select
 						name="transport" id="transport_select" class="form-control"
 						style="width: 250px" onchange="transferRequest(value)">
@@ -76,12 +81,18 @@
 					<textarea name="orderNote" wrap="off" cols="28" rows="5"
 						placeholder="Nhập ghi chú của bạn ..."></textarea>
 				</div>
+				
+				<php:if test="${message.isEmpty() != true }">
+					<h5 class="mt-4 text-danger" >${message }</h5>
+				</php:if>
 
 			</div>
 			<input type="hidden" name="hidden_transport" id="hidden_transport"
 				value="${transports.get(0).getId() }"> 
 			<input type="hidden"
 				name="hidden_total" id="hidden_total" value="${totalOrder}">
+			<input type="hidden"
+				name="oldtotal" id="oldtotal" value="${totalOrder}">
 			<input type="hidden" name="hidden_coupon" id="hidden_coupon" value="" >
 			<input type="hidden" name="userLogin" id="user_id" value="${userLoginId }" >
 			<div style="min-width: 350px"

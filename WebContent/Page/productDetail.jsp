@@ -139,6 +139,9 @@
 				<div class="col-lg-2"></div>
 			</div>
 		</div>
+		<div>
+			
+		</div>
 	</div>
 	<%@include file="web/footer.jsp"%>
 </body>
