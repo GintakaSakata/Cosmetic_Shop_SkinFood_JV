@@ -56,7 +56,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function addAjax(productId, qtt) {
-		
 		$.ajax({
 			url : "addProductToCart",
 			type : "post",
@@ -79,7 +78,7 @@
 		}
 		$.ajax({
 			url : "addProductToCart",
-			type : "get",
+			type : "post",
 			data : {
 				productId: productId,
 				quantity: -1

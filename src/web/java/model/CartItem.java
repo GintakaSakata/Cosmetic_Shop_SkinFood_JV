@@ -26,7 +26,8 @@ public class CartItem {
     }
     
     public String getTotalSingleFormat() {
-	return String.format("%1$,.0f", this.getProduct().getPrice()*this.getNumber() );
+	//this.getProduct().getPrice()*this.getNumber()
+	return String.format("%1$.0f", getTotalSingle());
     }
     @Override
     public String toString() {

@@ -31,7 +31,7 @@
 				<div class="col">
 					<div class="product-norm__items shadow-lg p-3 mb-5 bg-white rounded" style="height: 410px">
 						<div class="product-norm__img">
-							<a href="#"> <img
+							<a href="product_detail?id=${makeup.getId() }"> <img
 								src="${makeup.getFirstImage() }"
 								alt="">
 							</a>

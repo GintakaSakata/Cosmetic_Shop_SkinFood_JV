@@ -183,7 +183,7 @@ public class ConfirmOrderServlet extends HttpServlet {
 		    + "        </td>" + "        <td style=\"width: 20%; text-align: center;\"></td>\r\n"
 		    + "        <td style=\"width: 10%; text-align: center;\"></td>\r\n"
 		    + "        <td style=\"width: 30%; text-align: center; font-size: 20px; color: red;\"><del>"
-		    + oldtotal + "</del> </td>\r\n" + "\r\n" + "      </tr>\r\n" + "      <tr>\r\n"
+		    + Product.getPriceStaticFormat(oldtotal.toString()) + "</del> </td>\r\n" + "\r\n" + "      </tr>\r\n" + "      <tr>\r\n"
 		    + "        <td style=\"width: 20%; text-align: center;\"></td>\r\n"
 		    + "        <td style=\"width: 20%; text-align: center; border: 1px solid brow\"></td>"
 		    + "        <td style=\"width: 20%; text-align: center;\"></td>\r\n"
@@ -193,9 +193,11 @@ public class ConfirmOrderServlet extends HttpServlet {
 	}
 
 	try {
+	    
+	    String emailDefault = request.getParameter("emailOrder").isEmpty() ? "thesoonafu@gmail.com" : request.getParameter("emailOrder") ;
 	    MimeMessage message = new MimeMessage(sessionEmail);
 	    message.setFrom(new InternetAddress(username));
-	    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(userLogin.getEmail()));
+	    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailDefault));
 	    message.setSubject("Thank for your order");
 	    message.setContent("<h1 style=\"text-align: center; color: red\">This is detail about your deal</h1>\r\n"
 		    + "    <table style=\"margin: auto; width: 80%; border: 1px solid red\">\r\n"

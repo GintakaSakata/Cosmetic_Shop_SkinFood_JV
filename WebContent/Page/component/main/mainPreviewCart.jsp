@@ -57,8 +57,8 @@
 				</div>
 				<div class="row">
 					<label for="" class="col-md-6">Email (Edit in your profile)</label> <input
-						style="width: 250px" type="text" value="${userLogin.getEmail() }" name="emaik" id="email" 
-						disabled>
+						style="width: 250px" type="text" value="${userLogin.getEmail() }" name="emailOrder" id="email" 
+					>
 				</div>
 				<div class="row">
 					<label for="" class="col-md-6">Nhập đơn vị vận chuyển</label> <select

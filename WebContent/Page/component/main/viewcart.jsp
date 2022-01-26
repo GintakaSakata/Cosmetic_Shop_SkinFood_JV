@@ -62,8 +62,8 @@
 					<div class="cart-info__chosen col-lg-2 text-center">${cartItem.getProduct().getCategoryName() }</div>
 					<div class="col-lg-2">
 						<div class="cart-price__item">
-							<span class="product-sale__item-price-curr">${cartItem.getProduct().getPrice() }đ</span>
-							<span class="product-sale__item-price-old">${cartItem.getProduct().getPriceDefault() }đ</span>
+							<span class="product-sale__item-price-curr">${cartItem.getProduct().getFormatPriceStandard() }đ</span>
+							<span class="product-sale__item-price-old">${cartItem.getProduct().getFormatPriceDefault() }đ</span>
 						</div>
 					</div>
 					<div class="col-lg-2 text-center justify-content-center">
@@ -84,7 +84,7 @@
 						<div class="cart-info__total-price text-center">
 							<input class="col-lg-12 cart_main_element_title_total" style="border: none"
 								id="totalPrice${cartItem.getProduct().getId() }"
-								value="${cartItem.getTotalSingle() }"  >
+								value="${cartItem.getTotalSingleFormat() }"  >
 						</div>
 					</div>
 					<div class="col-lg-1">
@@ -111,7 +111,7 @@
 				<input type="hidden" id="total_price_hidden" name="total_price"
 					class="total_price_hidden" value="${sessionScope.cart.getTotal()}" />
 				<input type="text" class="col-md-2 btn btn-danger mr-4"
-					value="${sessionScope.cart.getTotal()}" id="total_price">
+					value="${sessionScope.cart.getFormatTotal()}" id="total_price">
 				<input type="submit" class="col-md-2 btn btn-success" value="Đặt hàng">
 			</form>
 		</div>

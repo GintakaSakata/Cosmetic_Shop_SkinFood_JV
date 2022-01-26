@@ -31,7 +31,8 @@
 }
 
 .cart_link_element:hover{
-	color: red;
+	color: yellow;
+	background-color: green;	
 }
 
 .icon-social:hover, .product-viewed:hover {
