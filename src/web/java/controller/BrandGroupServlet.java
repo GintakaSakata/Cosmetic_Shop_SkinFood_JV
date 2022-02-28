@@ -35,7 +35,7 @@ public class BrandGroupServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 	// TODO Auto-generated method stub
-	response.setContentType("text/html;charset=UTF-8");
+	response.setContentType("text/html; charset=UTF-8");
 	request.setCharacterEncoding("utf-8");
 
 	request.setAttribute("topfiveproducts", new BrandDAO().topfiveproducts(request.getParameter("id")));

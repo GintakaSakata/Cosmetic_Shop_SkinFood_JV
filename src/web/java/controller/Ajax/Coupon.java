@@ -51,6 +51,7 @@ public class Coupon extends HttpServlet {
 	if(discountAmount == 0) {
 	    out.println("" + totalString);
 	}else {
+	    //1000
 	    out.println(totalString);	    
 	}
     }

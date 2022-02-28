@@ -48,7 +48,6 @@ public class LoginFilter implements Filter {
 	Cookie[] cookies = request2.getCookies();
 	HttpServletResponse httpResponse = (HttpServletResponse) response;
 	if (cookies != null) {
-	    System.out.print("1");
 	    for (Cookie ck : cookies) {
 		if (ck.getName().equals("loginId") == true) {
 		    httpResponse.sendRedirect("home");
@@ -56,7 +55,6 @@ public class LoginFilter implements Filter {
 		}
 	    }
 	} else {
-	    System.out.print("2s");
 	    chain.doFilter(request, response);
 	}
 	chain.doFilter(request, response);

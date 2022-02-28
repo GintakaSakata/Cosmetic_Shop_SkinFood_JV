@@ -40,7 +40,6 @@ public class HomeServlet extends HttpServlet {
 	request.setCharacterEncoding("utf-8");
 	String start = request.getParameter("start") == null ? "0" :request.getParameter("start");
 	
-//	System.out.print(new EventDAO().getProductInEvent(start));
 	
 	request.setAttribute("saleMakeups", new CategoryDAO().getMakeupCate());
 	request.setAttribute("saleProducts", new EventDAO().getProductInEvent(start));

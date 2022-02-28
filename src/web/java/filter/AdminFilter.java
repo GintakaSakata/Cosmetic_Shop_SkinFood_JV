@@ -59,10 +59,8 @@ public class AdminFilter implements Filter {
 	    }
 	}
 	if (user.getRole() == 1) {
-	    System.out.print("1");
 	    chain.doFilter(request, response);
 	}else {
-	    System.out.print("2");
 	    request1.getRequestDispatcher("/Warning.jsp").forward(request1, response1);	    
 	}
     }
