@@ -75,7 +75,8 @@
 						<php:forEach items="${products}" var="product">
 							<tr style="font-size: 20px; font-weight: 600">
 
-								<td><php:set value="${0 }" var="i" /> <php:forEach
+								<td><php:set var="i" value="${0 }"/>
+								 	<php:forEach
 										items="${images}" var="image">
 										<php:if
 											test="${image.getProduct() == product.getId() && i==0 }">

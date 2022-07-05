@@ -84,8 +84,7 @@
 								<php:set value="${0 }" var="i"/>
 								<php:forEach items="${images }" var="image">
 									<php:if test="${image.getProduct() == product.getId() && i == 0}">
-										<img style="width: 60px; height: 60px"
-									class="img-md rounded-circle" alt="" src="${image.getImage() }">
+										<img style="width: 60px; height: 60px" class="img-md rounded-circle" alt="" src="${image.getImage() }">
 										<php:set value="${1 }" var="i"/>
 									</php:if>
 								</php:forEach></td>

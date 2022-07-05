@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="php"%>
 <div class="header-first">
-	<div class="container">
+	<div class="container header_container">
 		<div class="header-first__contact">
 			<ul class="contact-social">
 				<li><a href="#" class="icon-social"><i
